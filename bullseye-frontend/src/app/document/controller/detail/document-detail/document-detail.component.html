@@ -1,0 +1,18 @@
+<div class="container">
+    <div class="card">
+        <div class="card-header">Warehouse Details</div>
+        <div>
+            <label><b>Document Name: </b></label> {{document.name}}
+        </div>
+        <div>
+            <label><b>Document Address: </b></label> {{document.address}}
+        </div>
+        <div>
+            <label><b>Document Type:</b></label> {{document.type}}
+        </div>
+        <div>
+            <label><b>Emission date:</b></label> {{document.emissionDate | date: 'long'}}
+        </div>
+    </div>
+</div>
+<a href="documents">Back to List</a>

@@ -1,0 +1,65 @@
+<nav *ngIf="isLogged" class="navbar navbar-expand-lg bsNavBar">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Bulls Eyes Management</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Warehouse
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="warehouse-dispatch">Dispatch To Warehouse</a></li>
+              <li><a class="dropdown-item" href="virtual-dispatch">Transfer Dispatch</a></li>
+              <li><a class="dropdown-item" href="client-dispatch">Dispatch To Client</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="kardex-reception">Reception From Warehouse</a></li>
+              <li><a class="dropdown-item" href="virtual-reception">Transfer Reception</a></li>
+              <li><a class="dropdown-item" href="provider-reception">Purchase Reception</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Management
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="users">User List</a></li>
+              <li><a class="dropdown-item" href="newuser">New User</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="products">Product List</a></li>
+              <li><a class="dropdown-item" href="newproduct">New Product</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="warehouses">Warehouse List</a></li>
+              <li><a class="dropdown-item" href="warehouse-create">New Warehouse</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="documents">Document List</a></li>
+              <li><a class="dropdown-item" href="document-create">New Document</a></li>
+            </ul>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Reports
+            </a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="#">Stock By Warehouse</a></li>
+              <li><a class="dropdown-item" href="#">Product Stock</a></li>
+            </ul>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Logout</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+<footer class="footer">
+    <div class="container">
+        <span> All Rights Reserved 2022 Alphacoders</span>
+    </div>
+</footer>

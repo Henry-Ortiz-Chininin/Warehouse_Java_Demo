@@ -1,0 +1,24 @@
+<h2>Warehouse List</h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Address</th>
+            <th>Name</th>
+            <th>Warehouse Type</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor= " let warehouse of warehouses">
+            <td> {{warehouse.id}} </td>
+            <td> {{warehouse.address}} </td>
+            <td> {{warehouse.name}} </td>
+            <td> {{warehouse.type}} </td>
+            <td>
+                <button (click)="updateWarehouse(warehouse.id)" class="btn btn-info">Update</button>
+                <button (click)="viewWarehouseDetials(warehouse.id)" class="btn btn-success" style="margin-left: 10px">View</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

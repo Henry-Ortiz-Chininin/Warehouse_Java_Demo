@@ -1,0 +1,101 @@
+<h3>Dispatch To Client</h3>
+<form (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Operation Date</span>
+            <input type="date" class="form-control" aria-label="Operation Date" aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="dispatch.OperationDate" name="OperationDate">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Warehouse Origin</span>
+
+            <select class="form-select" aria-label="Warehouse Origin" [(ngModel)]="dispatch.FromWarehouseID" name="FromWarehouseID">
+                <option *ngFor="let warehouse of warehousesOUT" [value]="warehouse.WarehouseID">{{warehouse.Name}}</option>
+                </select>
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Invoice #</span>
+            <input type="text" class="form-control" aria-label="Invoice" aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="dispatch.InvoiceNumber" name="InvoiceNumber" />
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Client Name</span>
+            <input type="text" class="form-control" aria-label="Provider Name" aria-describedby="inputGroup-sizing-sm"
+            [(ngModel)]="dispatch.ClientName" name="ClientName"  />
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-5">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Product: </span>
+            <select class="form-select" aria-label="Product" [(ngModel)]="dispatch.NewProduct.ProductID" name="ProductID" id="ProductID"
+            (change)="onChangeProduct()">
+                <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+                </select>
+
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Quantity"  [(ngModel)]="dispatch.NewProduct.Quantity" name="Quantity" (change)="onChangeProduct()" >
+            <span class="input-group-text">Units</span>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Total $</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  [(ngModel)]="dispatch.NewProduct.TotalPrice" name="TotalPrice">
+            <span class="input-group-text">.00</span>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-success" (click)="onAddProduct()">Insert</button>
+    </div>
+
+</div>
+<hr>
+<div class="row">
+    <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            Product
+          </div>
+          <div class="col">
+            Quantity
+          </div>
+          <div class="col">
+            Total CAD
+          </div>
+          <div class="col">
+            
+        </div>
+        </div>
+        <div class="row" *ngFor="let product of dispatch.Products">
+            <div class="col">
+              {{product.ProductName}}
+            </div>
+            <div class="col">
+              {{product.Quantity}}
+            </div>
+            <div class="col">
+              {{product.TotalPrice}}
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success" (click)="onRemoveProduct(product.ProductID)">Remove</button>
+            </div>
+          </div>
+
+      </div>
+
+</div>
+<hr>
+<div class="row">
+    <button type="submit" class="btn btn-primary">Save Reception</button>
+</div>
+
+</form>

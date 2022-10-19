@@ -1,0 +1,110 @@
+<h3>Warehouse Reception</h3>
+<form (ngSubmit)="onSubmit()">
+<div class="row">
+    <div class="col">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Operation Date</span>
+            <input type="date" class="form-control" aria-label="Operation Date" aria-describedby="inputGroup-sizing-sm" 
+            [(ngModel)]="reception.OperationDate" name="OperationDate">
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Warehouse Destination #</span>
+
+            <select class="form-select" aria-label="Warehouse Destination" [(ngModel)]="reception.ToWarehouseID" name="ToWarehouseID">
+                <option *ngFor="let warehouse of warehousesIN" [value]="warehouse.WarehouseID">{{warehouse.Name}}</option>
+                </select>
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Warehouse Origin</span>
+
+            <select class="form-select" aria-label="Warehouse Origin" [(ngModel)]="reception.FromWarehouseID" name="FromWarehouseID">
+                <option *ngFor="let warehouse of warehousesOUT" [value]="warehouse.WarehouseID">{{warehouse.Name}}</option>
+                </select>
+        </div>
+    </div>
+    <div class="col">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Waybill #</span>
+            <input type="text" class="form-control" aria-label="Waybill" aria-describedby="inputGroup-sizing-sm" 
+            [(ngModel)]="reception.WaybillNumber" name="WaybillNumber"  />
+        </div>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Request #</span>
+            <input type="text" class="form-control" aria-label="Purchase Order" aria-describedby="inputGroup-sizing-sm" 
+            [(ngModel)]="reception.RequestNumber" name="RequestNumber" />
+        </div>
+    </div>
+</div>
+<hr>
+<div class="row">
+    <div class="col-sm-5">
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-sm">Product: </span>
+            <select class="form-select" aria-label="Product" [(ngModel)]="reception.NewProduct.ProductID" name="ProductID" id="ProductID" 
+            (change)="onChangeProduct()">
+                <option *ngFor="let product of products" [value]="product.id">{{product.name}}</option>
+                </select>
+
+        </div>    
+    </div>
+    <div class="col-sm-2">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" aria-label="Quantity"  [(ngModel)]="reception.NewProduct.Quantity" name="Quantity" (change)="onChangeProduct()"  >
+            <span class="input-group-text">Units</span>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <div class="input-group mb-3">
+            <span class="input-group-text">Total $</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)"  [(ngModel)]="reception.NewProduct.TotalPrice" name="TotalPrice">
+            <span class="input-group-text">.00</span>
+        </div>
+    </div>
+    <div class="col-sm-2">
+        <button type="button" class="btn btn-success" (click)="onAddProduct()">Insert</button>
+    </div>
+
+
+
+</div>
+<hr>
+<div class="row">
+    <div class="container text-center">
+        <div class="row">
+          <div class="col">
+            Product
+          </div>
+          <div class="col">
+            Quantity
+          </div>
+          <div class="col">
+            Total CAD
+          </div>
+          <div class="col">
+            
+        </div>
+        </div>
+        <div class="row" *ngFor="let product of reception.Products">
+            <div class="col">
+              {{product.ProductName}}
+            </div>
+            <div class="col">
+              {{product.Quantity}}
+            </div>
+            <div class="col">
+              {{product.TotalPrice}}
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-success" (click)="onRemoveProduct(product.ProductID)">Remove</button>
+            </div>
+          </div>
+
+      </div>
+     
+</div>
+<hr>
+<div class="row">
+    <button type="submit" class="btn btn-primary">Save Reception</button>
+</div>
+
+</form>

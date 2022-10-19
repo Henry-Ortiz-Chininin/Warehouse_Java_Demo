@@ -1,0 +1,19 @@
+<div class="container col-md-9">
+  <h1>
+User Login
+  </h1>
+<form class="ccontainer col-md-6" (ngSubmit)="userLogin()">
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+    <input type="email"  [(ngModel)]="user.userName" class="form-control" id="userName" name="userName ">
+  </div>
+
+  <div class="mb-3">
+    <label for="exampleFormControlInput1" class="form-label">Password</label>
+    <input type="password" [(ngModel)]="user.password" class="form-control" id="password" name="password" >
+  </div>
+  <button type="submit" class="btn btn-primary">Login</button>
+
+</form>
+
+</div>

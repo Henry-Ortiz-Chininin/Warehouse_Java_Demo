@@ -1,0 +1,19 @@
+<div class="col-md-6 offset-md-3">
+    <h3>Update Warehouse</h3>
+    <form (ngSubmit)="onSubmit()">
+        <div class="form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" id="address" [(ngModel)]="warehouse.address" name="address">
+        </div>
+        <div class="form-group">
+            <label>Warehouse Name</label>
+            <input type="text" class="form-control" id="name" [(ngModel)]="warehouse.name" name="name">
+        </div>
+        <div class="form-group">
+            <label>Warehouse Type</label>
+            <p>{{warehouse.type}}</p>
+        </div>
+        <br>
+        <button class="btn btn-success" type="submit">Submit</button>
+    </form>
+</div>
